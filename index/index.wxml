@@ -1,0 +1,66 @@
+
+
+<cover-view class="top">
+    <cover-view class="return" ontap="return" >
+        <cover-image src="{{config.imgsrc+'lastpage.png'}}"></cover-image>
+    </cover-view>
+
+    <cover-view class="color" ontap="change" data-keyword="color" data-value="#f92e1d">
+        <cover-view class="{{canvas.color=='#f92e1d'?'selected':''}}">
+            <cover-view class="circle"></cover-view>
+        </cover-view>
+    </cover-view>
+    <cover-view class="color" ontap="change" data-keyword="color" data-value="#000000">
+        <cover-view class="{{canvas.color=='#000000'?'selected':''}}">
+            <cover-view class="circle"></cover-view>
+        </cover-view>
+    </cover-view>
+    <cover-view class="color" ontap="change" data-keyword="color" data-value="#0301fc">
+        <cover-view class="{{canvas.color=='#0301fc'?'selected':''}}">
+            <cover-view class="circle"></cover-view>
+        </cover-view>
+    </cover-view>
+    <cover-view class="column {{canvas.column=='1px'?'active':''}}" ontap="change" data-keyword="column" data-value="1px">
+        <cover-view class="son" style="height:2rpx;border-radius:2rpx;"></cover-view>
+    </cover-view>
+    <cover-view class="column {{canvas.column=='3px'?'active':''}}" ontap="change" data-keyword="column" data-value="3px">
+        <cover-view class="son" style="height:4rpx;border-radius:2rpx;"></cover-view>
+    </cover-view>
+    <cover-view class="column {{canvas.column=='5px'?'active':''}}" ontap="change" data-keyword="column" data-value="5px">
+        <cover-view class="son" style="height:6rpx;border-radius:4rpx;"></cover-view>
+    </cover-view>
+</cover-view>
+
+<cover-view class="bottom" wx:if="{{explode}}">
+    <cover-view class="icon pencle" ontap="change" data-keyword="type" data-value="pencle">
+        <cover-image hidden="{{canvas.type!='pencle'}}" src="{{config.imgsrc+'apencle.png'}}"></cover-image>
+        <cover-image hidden="{{canvas.type=='pencle'}}" src="{{config.imgsrc+'pencle.png'}}"></cover-image>
+    </cover-view>
+    <cover-view class="icon eraser" ontap="change" data-keyword="type" data-value="eraser">
+        <cover-image hidden="{{canvas.type!='eraser'}}" src="{{config.imgsrc+'aeraser.png'}}"></cover-image>
+        <cover-image hidden="{{canvas.type=='eraser'}}" src="{{config.imgsrc+'eraser.png'}}"></cover-image>
+    </cover-view>
+    <cover-view class="icon clear" ontap="clear">
+        <cover-image src="{{config.imgsrc+'clear.png'}}"></cover-image>
+    </cover-view>
+    <cover-view class="icon laststep" ontap="last">
+        <cover-image src="{{config.imgsrc+'laststep.png'}}"></cover-image>
+    </cover-view>
+    <cover-view class="icon explode" ontap="explode">
+        <cover-image src="{{config.imgsrc+'explodec.png'}}"></cover-image>
+    </cover-view>
+</cover-view>
+<cover-view class="bottom" wx:if="{{!explode}}" style="width:auto">
+    <cover-view class="icon explode" ontap="explode">
+        <cover-image src="{{config.imgsrc+'explode3.png'}}"></cover-image>
+    </cover-view>
+</cover-view>
+
+<canvas 
+    canvas-id="canvas" 
+    style="width:{{canvas.width}}px;height:{{canvas.height}}px" 
+    ontouchmove="draw" 
+    ontouchstart="draw" 
+    ontouchend="draw" 
+    ontouchcancle="draw"
+></canvas>
